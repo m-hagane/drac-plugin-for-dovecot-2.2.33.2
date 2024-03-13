@@ -20,7 +20,7 @@ Installation
     $ make DOVDIR=../dovecot-2.0.14 LDFLAGS=-L/usr/local/drac/lib
 
 
-    if you build on Ubuntu 18 LTS
+    if you build on Ubuntu 18/22.04 LTS
     $ sudo apt -y install dovecot-dev
     $ make DOVDIR=/usr/include/dovecot
 
@@ -31,7 +31,7 @@ Installation
     $ su
     # cp -pi drac_plugin.so /usr/lib64/dovecot/modules/
 
-    if you build on Ubuntu 18 LTS
+    if you build on Ubuntu 18/22.04 LTS
     # sudo cp -pi drac_plugin.so /usr/lib/dovecot/modules/
 
 

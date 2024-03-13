@@ -3,15 +3,12 @@
  * dovecot plugin for DRAC authentication
  *
  * Copyright (C) 2011 DesigNET, INC.
+ * Updated 2024/03/12 by Masanobu Hagane
  *
  * $Id: drac-plugin.c,v 1.1.1.1 2011/09/09 08:04:34 usuda Exp $
  *
  * based:
  *   http://dovecot.org/patches/1.1/drac.c
- *
- * Modified 2018/10/11 by Masanobu Hagane <masanobu@hagane.jp>
- *   "network.h" => "net.h"
- *   DOVECOT_VERSION => DOVECOT_ABI_VERSION
  */
 #include "lib.h"
 #include "net.h"
@@ -52,8 +49,8 @@ static void drac_mail_user_created(struct mail_user *user)
     char *ep;
 
     /* check address family */
-    if(user->remote_ip->family != AF_INET) {
-        if(inet_ntop(user->remote_ip->family, &user->remote_ip->u,
+    if(user->conn.remote_ip->family != AF_INET) {
+        if(inet_ntop(user->conn.remote_ip->family, &user->conn.remote_ip->u,
            addrname, sizeof(addrname)-1) == NULL) {
             strcpy(addrname, "<unknown>");
         }
@@ -61,7 +58,7 @@ static void drac_mail_user_created(struct mail_user *user)
                 addrname);
     } else {
         /* get remote IPv4 address... uum... */
-        memcpy(&in_ip, &user->remote_ip->u, sizeof(in_ip));
+        memcpy(&in_ip, &user->conn.remote_ip->u, sizeof(in_ip));
 
         /* get DRAC server name */
         drachost = mail_user_plugin_getenv(user, "dracdserver");

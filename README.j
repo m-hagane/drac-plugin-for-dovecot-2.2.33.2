@@ -13,13 +13,13 @@ DRAC plugin for Dovecot-2.x
   1) ビルド
     dovecotのソースディレクトリを DOVDIR で指定して、make を実行します。
 
-    $ make DOVDIR=../dovecot-2.0.13
+    $ make DOVDIR=../dovecot-2.3.2
 
     LDFLAGSで drac のディレクトリを指定できます。
 
-    $ make DOVDIR=../dovecot-2.0.14 LDFLAGS=-L/usr/local/drac/lib
+    $ make DOVDIR=../dovecot-2.3.2 LDFLAGS=-L/usr/local/drac/lib
 
-    Ubuntu 18 LTS の場合
+    Ubuntu 18/22.04 LTS の場合
     $ sudo apt -y install dovecot-dev
     $ make DOVDIR=/usr/include/dovecot
 
